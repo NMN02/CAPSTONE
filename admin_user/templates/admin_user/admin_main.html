@@ -1,0 +1,14 @@
+{% extends 'admin_layout.html' %}
+
+{% block title %}
+  Admin
+{% endblock %}
+
+{%block content %}
+
+<div class="mb-4">
+    <a href="{% url 'create_announcement' %}" class="btn btn-primary">
+        <i class="fas fa-bullhorn"></i> Create Announcement
+    </a>
+</div>
+{% endblock %}

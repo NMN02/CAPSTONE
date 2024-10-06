@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title%}
+        {% endblock%}
+    </title>
+    <link rel="stylesheet" href="{%static 'css/admin_layout.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
+        <div class="container-fluid">
+            <img src="/static/images/logo.png" alt="Logo" class="logo">
+            <span class="admin-text font-weight-bold">Matnog Office of Municipal Agriculturists</span>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <form class="form-inline my-2 my-lg-0 mr-3">
+                    <input class="form-control" type="search" placeholder="Search..." aria-label="Search">
+                </form>
+                <div class="navbar-icons">
+                    <a class="fas fa-bell fa-lg mr-4 text-secondary"></a>
+                    <a class="fas fa-user-circle fa-lg text-secondary"></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="d-flex">
+        <div id="sidebar" class="bg-success text-light p-4">
+            <span class="toggle-btn" onclick="toggleSidebar()">
+                <i class="fas fa-angle-double-left"></i> <!-- Toggle icon -->
+            </span>
+            <!-- Admin Icon and Text -->
+            <div class="admin-info mb-4">
+                <i class="fas fa-user-shield fa-lg"></i> <!-- Admin Icon -->
+            </div>
+
+            <ul class="nav flex-column mt-3">
+                <li class="nav-item">
+                    <a href="{% url 'admin_user:dashboard'%}" class="nav-link text-light font-weight-bold">
+                        <i class="fas fa-tachometer-alt"></i> <span class="link-text">DASHBOARD</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'admin_user:admin_farmer'%}" class="nav-link text-light font-weight-bold">
+                        <i class="fas fa-tractor"></i> <span class="link-text">FARMERS</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'admin_user:admin_employee'%}" class="nav-link text-light font-weight-bold">
+                        <i class="fas fa-users"></i> <span class="link-text">EMPLOYEES</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-light font-weight-bold">
+                        <i class="fas fa-file-alt"></i> <span class="link-text">REPORTS</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-light font-weight-bold">
+                        <i class="fas fa-file-signature"></i> <span class="link-text">INSURANCE</span>
+                    </a>
+                </li>
+                <li class="nav-item mt-auto">
+                    <a href="{%  url 'user_management:logoutUser' %}" class="nav-link text-light font-weight-bold logout-btn p-2 rounded" 
+                       style="background-color: #032c16; margin-left: -15px;">
+                        <i class="fas fa-sign-out-alt"></i> <span class="link-text">Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            {%block content%}
+            <!-- Your main content goes here -->
+            <h2>Welcome to the Admin Dashboard</h2>
+            <p>Your administrative tasks and information are accessible here.</p>
+            {%endblock%}
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; Office of Municipal Agriculturists in Matnog. All Rights Reserved.
+    </footer>
+
+    <!-- Scripts -->
+    <script src="{% static 'js/admin_layout.js'%}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  
+
+    
+</body>
+
+</html>
